@@ -16,10 +16,7 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    public void Die()
-    {
-        Destroy(this.gameObject);
-    }
+    
 
     // public float GetHealth()
     // {
@@ -42,11 +39,17 @@ public class Enemy : MonoBehaviour
     //     
     // }
     
-
+    public void Die()
+    {
+        Destroy(this.gameObject);
+    }
     public void OnCollisionEnter2D(Collision2D coll)
     {
-        TakeDamege(10);
-        Destroy(coll.gameObject);
+        if (coll.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamege(10);
+            Destroy(coll.gameObject);
+        }
     }
 
     
