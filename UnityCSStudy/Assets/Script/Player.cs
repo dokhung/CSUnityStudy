@@ -23,8 +23,12 @@ namespace Script
 
         public void OnCollisionEnter2D(Collision2D coll)
         {
-            TakeDamage(10);
-            Destroy(coll.gameObject);
+            if (coll.gameObject.CompareTag("Enemy"))
+            {
+                TakeDamage(10);
+                Debug.Log("충돌");
+                Destroy(coll.gameObject);
+            }
         }
     }
 }

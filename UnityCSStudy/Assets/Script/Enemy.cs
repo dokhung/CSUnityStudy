@@ -5,7 +5,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private float health = 100.0f;
+    private float health = 50.0f;
+    
+    public float Health
+    {
+        get { return health; }
+    }
+    void Start()
+    {
+        Debug.Log("health : " + health);
+    }
 
     void TakeDamege(int value)
     {
@@ -15,31 +24,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    
-    
-
-    // public float GetHealth()
-    // {
-    //     return health;
-    // }
-
-    public float Health
-    {
-        get { return health; }
-    }
-    // // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("health : " + health);
-    }
-    //
-    // // Update is called once per frame
-    // void Update()
-    // {
-    //     
-    // }
-    
-    public void Die()
+    void Die()
     {
         Destroy(this.gameObject);
     }
@@ -48,9 +33,16 @@ public class Enemy : MonoBehaviour
         if (coll.gameObject.CompareTag("Bullet"))
         {
             TakeDamege(10);
+            Debug.Log("health : " + health);
             Destroy(coll.gameObject);
         }
     }
-
     
+    
+    
+   
 }
+
+
+
+
